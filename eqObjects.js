@@ -18,21 +18,34 @@ const eqArrays = function(arr1, arr2) {
   return true;
 }
 
+
 const eqObjects = function(object1, object2) {
+  let matches = true;
   if (Object.keys(object1).length !== Object.keys(object2).length) {
-    return false;
+    matches = false;
   }
   for (const key in object1) {
+    if (typeof object1[key] === 'object') {
+      if (typeof object2[key] !== 'object') {
+        matches = false;
+      }
+      if (typeof object2 === 'object') {
+        matches = eqObjects(object1[key], object2[key]);
+      }
+    } else {
+      if (object1[key] !== object2[key]) {
+        matches = false;
+      }
+    }
     if (Array.isArray(object1[key])) {
       if (!eqArrays(object1[key], object2[key])) {
-        return false;
+        matches = false;
       }
-    } else if (object1[key] !== object2[key]) {
-      return false;
     }
   }
-  return true;
+  return matches;
 }
+
 
 const ab = { a: "1", b: "2" };
 const ba = { b: "2", a: "1" };
@@ -47,3 +60,28 @@ const cd2 = { c: "1", d: ["2", 3, 4] };
 
 assertEqual(eqObjects(cd, dc), true);
 assertEqual(eqObjects(cd, cd2), false);
+
+assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true); // => true
+
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false); // => false
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false); // => false
+
+
+
+// BELOW IS MY OLD EQOBJECTS FUNCTION
+
+// const eqObjects = function(object1, object2) {
+//   if (Object.keys(object1).length !== Object.keys(object2).length) {
+//     return false;
+//   }
+//   for (const key in object1) {
+//     if (Array.isArray(object1[key])) {
+//       if (!eqArrays(object1[key], object2[key])) {
+//         return false;
+//       }
+//     } else if (object1[key] !== object2[key]) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
