@@ -12,5 +12,7 @@ const flatten = function(source) {
   return result;
 }
 
-console.log(flatten([1,2,3,4,5,[1,2,3,4,5],6,7,8,[9]]));
-console.log(flatten(['Hello', 'this', ['an', 'array'], 'of', ['sorts']]));
+// console.log(flatten([1,2,3,4,5,[1,2,3,4,5],6,7,8,[9]]));
+// console.log(flatten(['Hello', 'this', ['an', 'array'], 'of', ['sorts']]));
+
+module.exports = flatten;

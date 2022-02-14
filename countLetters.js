@@ -1,10 +1,10 @@
-const assertEqual = function(actual, expected) {
-  if (actual === expected) {
-    console.log(`✅ - Assertion passed: ${actual} === ${expected}`);
-  } else {
-    console.log(`❌ - Assertion failed: ${actual} !== ${expected}`);
-  }
-};
+// const assertEqual = function(actual, expected) {
+//   if (actual === expected) {
+//     console.log(`✅ - Assertion passed: ${actual} === ${expected}`);
+//   } else {
+//     console.log(`❌ - Assertion failed: ${actual} !== ${expected}`);
+//   }
+// };
 
 const countLetters = function(sentence) {
   const noSpace = sentence.replace(/ /g, '');
@@ -19,4 +19,6 @@ const countLetters = function(sentence) {
   return results;
 }
 
-console.log(countLetters("why hello there"));
+// console.log(countLetters("why hello there"));
+
+module.exports = countLetters;
