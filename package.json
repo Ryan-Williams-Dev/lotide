@@ -1,7 +1,7 @@
 {
-  "name": "lotide",
+  "name": "@ryan_williams/lotide",
   "version": "1.0.0",
-  "description": "",
+  "description": "A package of useful functions, made for practice while learning",
   "main": "assertArraysEqual.js",
   "directories": {
     "test": "test"
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/Zenophage/lotide.git"
   },
-  "author": "",
+  "author": "Ryan Williams <r.d.williams.ca@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Zenophage/lotide/issues"
